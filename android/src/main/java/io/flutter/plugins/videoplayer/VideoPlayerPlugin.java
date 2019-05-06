@@ -92,7 +92,7 @@ public class VideoPlayerPlugin implements MethodCallHandler {
                 DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                 DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
                 true);
-        defaultHttpDataSourceFactory.getDefaultRequestProperties().set("Referrer","DEMO");
+        defaultHttpDataSourceFactory.getDefaultRequestProperties().set("Referer","DEMO");
         System.out.println("--------------------------------------------------");
         dataSourceFactory = defaultHttpDataSourceFactory;
       }
