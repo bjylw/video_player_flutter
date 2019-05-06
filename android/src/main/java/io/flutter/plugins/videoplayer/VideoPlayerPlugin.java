@@ -86,17 +86,18 @@ public class VideoPlayerPlugin implements MethodCallHandler {
       if (uri.getScheme().equals("asset") || uri.getScheme().equals("file")) {
         dataSourceFactory = new DefaultDataSourceFactory(context, "ExoPlayer");
       } else {
-        dataSourceFactory =
-            new DefaultHttpDataSourceFactory(
+        DefaultHttpDataSourceFactory defaultHttpDataSourceFactory = new DefaultHttpDataSourceFactory(
                 "ExoPlayer",
                 null,
                 DefaultHttpDataSource.DEFAULT_CONNECT_TIMEOUT_MILLIS,
                 DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
                 true);
+        defaultHttpDataSourceFactory.getDefaultRequestProperties().set("Referrer","DEMO");
+        dataSourceFactory = defaultHttpDataSourceFactory;
       }
-      dataSourceFactory.setDefaultRequestProperty("Referrer","DEMO");
 
       MediaSource mediaSource = buildMediaSource(uri, dataSourceFactory, context);
+
       exoPlayer.prepare(mediaSource);
 
       setupVideoPlayer(eventChannel, textureEntry, result);
