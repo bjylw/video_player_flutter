@@ -94,6 +94,7 @@ public class VideoPlayerPlugin implements MethodCallHandler {
                 DefaultHttpDataSource.DEFAULT_READ_TIMEOUT_MILLIS,
                 true);
       }
+      dataSourceFactory.setDefaultRequestProperty("Referrer","DEMO");
 
       MediaSource mediaSource = buildMediaSource(uri, dataSourceFactory, context);
       exoPlayer.prepare(mediaSource);
